@@ -15,6 +15,14 @@ def encode(password):
     return encoded_password
 
 
+def decode(encoded_password):
+    # iterate through each digit in encoded password and subtracts 3
+    decoded_password = ""
+    for char in encoded_password:
+        decoded_password += str(int(char) - 3)
+    return decoded_password
+
+
 if __name__ == '__main__':
     user_input = None
     while user_input != 3:
@@ -29,5 +37,8 @@ if __name__ == '__main__':
             password = input("Please enter your password to encode: ")
             encoded_password = encode(password)
             print("Your password has been encoded and stored!\n")
-        if user_input == 2:
-            print(f"The encoded password is {encoded_password}, and the original password is ")
+        elif user_input == 2:
+            decoded_password = decode(encoded_password)
+            print(f"The encoded password is {encoded_password}, and the original password is {decoded_password}")
+        else:
+            break
